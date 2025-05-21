@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/df3587a6-0d8d-43ce-a03b-344cbab3ea71/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/pkapp2025",
+    "appService.deploySubpath": "."
+}
