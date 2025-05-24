@@ -19,6 +19,7 @@ export default function ThankYouPage() {
                 <p><strong>🕒 Duration:</strong> {data.hours}h {data.minutes}m</p>
                 <p><strong>💳 Price:</strong> {data.price} EUR</p>
                 <p><strong>🚘 License Plate:</strong> {data.licensePlate}</p>
+                <p><strong>📍 Location ID:</strong> {data.locationId}</p>
                 <p><strong>🔐 Card:</strong> **** **** **** {data.cardNumber?.slice(-4)}</p>
                 <p><strong>📅 Expiry:</strong> {data.expDate}</p>
                 <p><strong>CVV:</strong> {data.cvv ? '***' : ''}</p>

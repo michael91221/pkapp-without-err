@@ -9,6 +9,7 @@ type ParkingData = {
     price: string;
     licensePlate: string;
     cardNumber?: string;
+    locationId:string;
     expDate?: string;
     cvv?: string;
     cardType?: 'credit' | 'debit';
@@ -33,6 +34,7 @@ export const ParkingProvider = ({ children }: { children: ReactNode }) => {
         minutes: 15,
         price: '0.25',
         licensePlate: '',
+        locationId: '',
     });
 
     const setData = (updates: Partial<ParkingData>) => {

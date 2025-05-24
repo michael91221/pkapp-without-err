@@ -21,13 +21,29 @@ export default function ProcessingPage() {
 
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-8">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500 mb-6" />
-            <h1 className="text-xl font-semibold mb-2">Processing your information...</h1>
-            <p className="text-gray-600 max-w-md">
-                We&apos;re finalizing your parking details and securing your payment.
-                This will only take a few moments. Thank you for your patience!
-            </p>
-        </div>
+      // Green version
+      // <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-8">
+      //     <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500 mb-6" />
+      //     <h1 className="text-xl font-semibold mb-2">Processing your information...</h1>
+      //     <p className="text-gray-600 max-w-md">
+      //         We&apos;re finalizing your parking details and securing your payment.
+      //         This will only take a few moments. Thank you for your patience!
+      //     </p>
+      // </div>
+
+      // Blue version
+      <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-8">
+        <div
+          className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 mb-6"
+          style={{ borderTopColor: "#0172f2", borderBottomColor: "#0172f2" }}
+        />
+        <h1 className="text-xl font-semibold mb-2">
+          Processing your information...
+        </h1>
+        <p className="text-gray-600 max-w-md">
+          We&apos;re finalizing your parking details and securing your payment.
+          This will only take a few moments. Thank you for your patience!
+        </p>
+      </div>
     );
 }

@@ -36,37 +36,60 @@ export default function VerifyPhonePage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-8">
-            <h1 className="text-xl font-semibold mb-4">Verify Your Phone Number</h1>
-            <p className="text-gray-600 mb-6">
-                Enter the code sent to <strong>{maskedPhone}</strong>
-            </p>
+      <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-8">
+        <h1 className="text-xl font-semibold mb-4">Verify Your Phone Number</h1>
+        <p className="text-gray-600 mb-6">
+          Enter the code sent to <strong>{maskedPhone}</strong>
+        </p>
 
-            <input
-                type="text"
-                value={code}
-                onChange={(e) => {
-                    setCode(e.target.value);
-                    setIdle(false); // reset idle when typing
-                }}
-                className="w-full max-w-xs border p-2 rounded mb-4"
-                placeholder="Enter verification code"
-            />
-            {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+        <input
+          type="text"
+          value={code}
+          onChange={(e) => {
+            setCode(e.target.value);
+            setIdle(false); // reset idle when typing
+          }}
+          className="w-full max-w-xs border p-2 rounded mb-4"
+          placeholder="Enter verification code"
+        />
+        {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
-            <button
+        {/* Green Version */}
+        {/* <button
                 onClick={handleVerify}
                 className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800"
             >
                 Verify
-            </button>
+            </button> */}
 
-            {idle && (
-                <div className="mt-6 flex flex-col items-center text-sm text-gray-500">
-                    <div className="animate-spin h-6 w-6 border-t-2 border-b-2 border-green-600 rounded-full mb-2" />
-                    Waiting for input…
-                </div>
-            )}
-        </div>
+        {/* Blue version */}
+        <button
+          onClick={handleVerify}
+          className="text-white px-6 py-2 rounded hover:bg-[#015ecb] transition duration-200"
+          style={{ backgroundColor: "#0172f2" }}
+        >
+          Verify
+        </button>
+
+        {idle && (
+          //Green version
+          //   <div className="mt-6 flex flex-col items-center text-sm text-gray-500">
+          //     <div className="animate-spin h-6 w-6 border-t-2 border-b-2 border-green-600 rounded-full mb-2" />
+          //     Waiting for input…
+          //   </div>
+
+          // Blue version
+          <div className="mt-6 flex flex-col items-center text-sm text-gray-500">
+            <div
+              className="animate-spin h-6 w-6 border-t-2 border-b-2 rounded-full mb-2"
+              style={{
+                borderTopColor: "#0172f2",
+                borderBottomColor: "#0172f2",
+              }}
+            />
+            Waiting for input…
+          </div>
+        )}
+      </div>
     );
 }

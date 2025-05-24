@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { useParking } from '../context/ParkingContext';
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { useRouter, usePathname, useParams } from 'next/navigation';
+import { useParking } from '../../context/ParkingContext';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export default function ParkingPage() {
     const [hours, setHours] = useState(0);
@@ -11,8 +11,9 @@ export default function ParkingPage() {
 
     const router = useRouter();
     const pathname = usePathname();
-   
     const { setData } = useParking();
+    const params = useParams();  // folosești useParams
+    const id = params.id;        // extragi id din path
 
     const calculatePrice = () => {
         const totalMinutes = hours * 60 + minutes;
@@ -20,33 +21,29 @@ export default function ParkingPage() {
         return ((totalMinutes / 15) * pricePer15Min).toFixed(2);
     };
 
-    const handleContinue = () => {
-        // Comment out setData to isolate
-        setData({
-            hours,
-            minutes,
-            price: calculatePrice(),
-        });
-        console.log('trying to navigate...');
-        router.push('/vehicle');
-    };
+      const handleContinue = () => {
+    setData({
+      hours,
+      minutes,
+      price: calculatePrice(),
+    });
+
+    if (id) {
+      router.push(`/vehicle/${id}`);  // redirect cu id in path
+    } else {
+      router.push('/vehicle');
+    }
+  };
 
     const isGreen = pathname.includes('/c1');
     const isBlue = pathname.includes('/q1');
 
 
-    // Button class
-    const buttonClass = isGreen
-        ? 'bg-green-700 text-white hover:bg-green-800'
-        : isBlue
-        ? 'bg-[#0172f2] text-white hover:brightness-90'
-        : 'bg-gray-700 text-white'; // fallback
 
-          // Footer color
-    const footerStyle = {
+        
+ const footerStyle = {
         backgroundColor: isGreen ? '#047857' : isBlue ? '#0172f2' : '#333',
     };
-
 
     return (
         <div className="min-h-screen flex flex-col justify-between">
@@ -100,17 +97,40 @@ export default function ParkingPage() {
 
                 {/* Continue button */}
 
-                 <button
+                {/* Green version */}
+                {/* <button
                     onClick={handleContinue}
-                    className={`px-6 py-2 rounded ${buttonClass}`}
+                    className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800"
                 >
                     Continue
-                </button>
+                </button> */}
+
+
+
+                {/* Blue version */}
+                <button
+  onClick={handleContinue}
+  style={{
+    backgroundColor: isGreen ? '#047857' : isBlue ? '#0172f2' : '#333',
+    color: '#fff', // text alb
+  }}
+  className="px-6 py-2 rounded font-medium hover:opacity-90 transition"
+>
+  Continue
+</button>
+
             </main>
 
+            {/* Footer */}
+            {/* Green version */}
+            {/* <footer className="bg-green-800 text-white text-center text-sm py-2"
+            style={{ backgroundColor: '#0172f2' }}>
+                Copyright © EasyPark AB 2025
+            </footer> */}
 
-            {/* Footer */}           
-            <footer className="text-white text-center text-sm py-2" style={footerStyle}>
+
+            {/* Blue version */}
+              <footer className="text-white text-center text-sm py-2" style={footerStyle}>
                 Copyright © EasyPark AB 2025
             </footer>
 
